@@ -11,7 +11,7 @@ interface MoviesListDao {
     fun getMoviesList(): List<MovieLocalEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addMovie(products: List<MovieLocalEntity>): List<Long>
+    fun addMovie(movie: List<MovieLocalEntity>): List<Long>
 
     @Query("delete from MoviesList")
     fun clearMoviesListCash():Int

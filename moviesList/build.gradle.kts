@@ -1,8 +1,9 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
-    id("com.google.devtools.ksp")
     id("kotlin-parcelize")
+    id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -44,6 +45,9 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
+    /*implementation ("com.google.devtools.ksp:symbol-processing-api:1.9.20-1.0.13")
+    ksp ("com.google.devtools.ksp:ksp-gradle-plugin:1.9.20-1.0.13")*/
+
     //Retrofit
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
@@ -52,4 +56,9 @@ dependencies {
     implementation("androidx.room:room-runtime:2.6.1")
     annotationProcessor("androidx.room:room-compiler:2.6.1")
     ksp("androidx.room:room-compiler:2.6.1")
+
+    //Hilt
+    implementation("com.google.dagger:hilt-android:2.46.1")
+    ksp("com.google.dagger:hilt-android-compiler:2.44")
+
 }
