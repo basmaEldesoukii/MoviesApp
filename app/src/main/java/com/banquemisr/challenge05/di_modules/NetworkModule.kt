@@ -1,5 +1,6 @@
 package com.banquemisr.challenge05.di_modules
 
+import android.annotation.SuppressLint
 import com.banquemisr.challenge05.BuildConfig
 import com.banquemisr.movieslist.data.remote.MoviesListRemoteServices
 import com.google.gson.Gson
@@ -23,11 +24,11 @@ object NetworkModule {
     @Provides
     fun provideLoggingInterceptor(): HttpLoggingInterceptor {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
-        if (BuildConfig.DEBUG)
+        if (BuildConfig.DEBUG) {
             httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-        else
-        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.NONE
-
+        }else {
+            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.NONE
+        }
         return httpLoggingInterceptor
     }
 
