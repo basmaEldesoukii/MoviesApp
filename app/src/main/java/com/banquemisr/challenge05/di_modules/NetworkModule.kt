@@ -1,5 +1,6 @@
 package com.banquemisr.challenge05.di_modules
 
+import com.banquemisr.challenge05.BuildConfig
 import com.banquemisr.movieslist.data.remote.MoviesListRemoteServices
 import com.google.gson.Gson
 import dagger.Module
