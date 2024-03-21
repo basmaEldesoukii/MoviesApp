@@ -2,6 +2,7 @@ package com.banquemisr.challenge05.di_modules
 
 import android.content.Context
 import androidx.room.Room
+import com.banquemisr.movie_details.data.local.MovieDetailsLocalDatabase
 import com.banquemisr.movieslist.data.local.MoviesListLocalDatabase
 import dagger.Module
 import dagger.Provides
@@ -19,10 +20,25 @@ object DatabaseModule {
     fun provideMoviesListDatabase(@ApplicationContext application: Context): MoviesListLocalDatabase {
         return Room
             .databaseBuilder(application, MoviesListLocalDatabase::class.java, "Movies_list_database")
+            .fallbackToDestructiveMigration()
             .build()
     }
     @Provides
     @Singleton
     fun provideMoviesListDao(moviesListDataBase: MoviesListLocalDatabase) =
         moviesListDataBase.moviesListDao()
+
+    @Provides
+    @Singleton
+    fun provideMovieDetailsDatabase(@ApplicationContext application: Context): MovieDetailsLocalDatabase {
+        return Room
+            .databaseBuilder(application, MovieDetailsLocalDatabase::class.java, "movie_details_database")
+            .fallbackToDestructiveMigration()
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideMovieDetailsDao(movieDetailsDataBase: MovieDetailsLocalDatabase) =
+        movieDetailsDataBase.movieDetailsDao()
 }

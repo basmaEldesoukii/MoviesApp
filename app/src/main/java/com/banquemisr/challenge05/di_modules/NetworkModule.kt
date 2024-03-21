@@ -1,7 +1,8 @@
 package com.banquemisr.challenge05.di_modules
 
-import android.annotation.SuppressLint
+
 import com.banquemisr.challenge05.BuildConfig
+import com.banquemisr.movie_details.data.remote.MovieDetailsRemoteServices
 import com.banquemisr.movieslist.data.remote.MoviesListRemoteServices
 import com.google.gson.Gson
 import dagger.Module
@@ -76,5 +77,11 @@ object NetworkModule {
     @Provides
     fun provideMoviesListService(retrofit: Retrofit): MoviesListRemoteServices {
         return retrofit.create(MoviesListRemoteServices::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideMovieDetailsService(retrofit: Retrofit): MovieDetailsRemoteServices {
+        return retrofit.create(MovieDetailsRemoteServices::class.java)
     }
 }
