@@ -19,6 +19,9 @@ android {
     }
 
     buildTypes {
+        all {
+            buildConfigField("String", "API_KEY", "\"${project.findProperty("API_KEY")}\"")
+        }
         release {
             isMinifyEnabled = false
             proguardFiles(
