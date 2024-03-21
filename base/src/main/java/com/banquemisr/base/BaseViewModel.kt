@@ -22,8 +22,8 @@ abstract class BaseViewModel<Intent : UiIntent, State : UiState> : ViewModel() {
     private val _uiState : MutableStateFlow<State> = MutableStateFlow(initialState)
     val uiState = _uiState.asStateFlow()
 
-    private val _event : MutableSharedFlow<Intent> = MutableSharedFlow()
-    val intent = _event.asSharedFlow()
+    private val _intent : MutableSharedFlow<Intent> = MutableSharedFlow()
+    val intent = _intent.asSharedFlow()
 
 
     init {
@@ -51,8 +51,7 @@ abstract class BaseViewModel<Intent : UiIntent, State : UiState> : ViewModel() {
      * Set new Intent
      */
     fun setIntent(intent : Intent) {
-        val newIntent = intent
-        viewModelScope.launch { _event.emit(newIntent) }
+        viewModelScope.launch { _intent.emit(intent) }
     }
 
 
