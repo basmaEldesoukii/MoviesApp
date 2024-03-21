@@ -6,13 +6,13 @@ import javax.inject.Inject
 class MoviesListRemoteDataSourceImp @Inject constructor(
     private val apiService: MoviesListRemoteServices
 ) : MoviesListRemoteDataSourceContract {
-    override suspend fun getNowPlayingList(): List<MoviesListDataModel> {
+    override suspend fun getNowPlayingList(): MoviesListDataModel {
         return apiService.getNowPlayingList()
     }
-    override suspend fun getPopularList(): List<MoviesListDataModel> {
+    override suspend fun getPopularList(): MoviesListDataModel {
         return apiService.getPopularList()
     }
-    override suspend fun getUpcomingList(): List<MoviesListDataModel> {
+    override suspend fun getUpcomingList(): MoviesListDataModel {
         return apiService.getUpcomingList()
     }
 }
