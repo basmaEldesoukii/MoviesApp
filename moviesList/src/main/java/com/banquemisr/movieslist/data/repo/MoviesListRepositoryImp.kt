@@ -6,7 +6,7 @@ import com.banquemisr.movieslist.data.local.MovieLocalEntity
 import com.banquemisr.movieslist.data.local.MoviesListLocalDataSourceContract
 import com.banquemisr.movieslist.data.remote.MoviesListRemoteDataSourceContract
 import com.banquemisr.movieslist.domain.contract.MoviesListRepositoryContract
-import com.banquemisr.movieslist.domain.entity.MoviesListDataModel
+import com.banquemisr.movieslist.domain.entity.Movie
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -14,18 +14,18 @@ import javax.inject.Inject
 class MoviesListRepositoryImp @Inject constructor(
     private val localDataSource: MoviesListLocalDataSourceContract,
     private val remoteDataSource: MoviesListRemoteDataSourceContract,
-    private val moviesListDataMapper: Mapper<MoviesListDataModel, MovieLocalEntity>,
+    private val moviesListDataMapper: Mapper<Movie, MovieLocalEntity>,
 ): MoviesListRepositoryContract {
 
-    override suspend fun getNowPlayingList(): Flow<Resource<List<MoviesListDataModel>>> {
+    override suspend fun getNowPlayingList(): Flow<Resource<List<Movie>>> {
         return flow {
             try {
                 // Get data from RemoteDataSource
                 val data = remoteDataSource.getNowPlayingList()
                 // Emit data
-                emit(Resource.Success(data))
+                emit(Resource.Success(data.results))
                 // Save to local
-                localDataSource.insertMoviesList(moviesListDataMapper.fromList(data))
+                localDataSource.insertMoviesList(moviesListDataMapper.fromList(data.results))
 
             } catch (ex: Exception) {
                 ex.printStackTrace()
@@ -43,15 +43,15 @@ class MoviesListRepositoryImp @Inject constructor(
         }
     }
 
-    override suspend fun getPopularList(): Flow<Resource<List<MoviesListDataModel>>> {
+    override suspend fun getPopularList(): Flow<Resource<List<Movie>>> {
         return flow {
             try {
                 // Get data from RemoteDataSource
                 val data = remoteDataSource.getPopularList()
                 // Emit data
-                emit(Resource.Success(data))
+                emit(Resource.Success(data.results))
                 // Save to local
-                localDataSource.insertMoviesList(moviesListDataMapper.fromList(data))
+                localDataSource.insertMoviesList(moviesListDataMapper.fromList(data.results))
 
             } catch (ex: Exception) {
                 ex.printStackTrace()
@@ -69,15 +69,15 @@ class MoviesListRepositoryImp @Inject constructor(
         }
     }
 
-    override suspend fun getUpcomingList(): Flow<Resource<List<MoviesListDataModel>>> {
+    override suspend fun getUpcomingList(): Flow<Resource<List<Movie>>> {
         return flow {
             try {
                 // Get data from RemoteDataSource
                 val data = remoteDataSource.getUpcomingList()
                 // Emit data
-                emit(Resource.Success(data))
+                emit(Resource.Success(data.results))
                 // Save to local
-                localDataSource.insertMoviesList(moviesListDataMapper.fromList(data))
+                localDataSource.insertMoviesList(moviesListDataMapper.fromList(data.results))
 
             } catch (ex: Exception) {
                 ex.printStackTrace()
