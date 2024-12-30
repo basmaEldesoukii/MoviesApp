@@ -47,6 +47,6 @@ MovieApp is an Android application designed to showcase now playing, popular, an
 - **100% Kotlin:** The entire project is written in Kotlin for modern, concise, and safe code.
 
 ## Screenshots
-![Screenshot_movie_list1](https://github.com/basmaEldesouky/MoviesApp/assets/41978905/9b9179cf-8355-4ade-aa14-77b820981b0a)
-![Screenshot_movie_details](https://github.com/basmaEldesouky/MoviesApp/assets/41978905/02f06d04-a8a9-4d7f-933a-348719e1f139)
+<img src="https://github.com/basmaEldesouky/MoviesApp/assets/41978905/9b9179cf-8355-4ade-aa14-77b820981b0a" width="400">
+<img src="https://github.com/basmaEldesouky/MoviesApp/assets/41978905/02f06d04-a8a9-4d7f-933a-348719e1f139" width="400">
 
